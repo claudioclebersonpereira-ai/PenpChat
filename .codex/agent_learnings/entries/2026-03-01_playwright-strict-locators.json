@@ -1,0 +1,8 @@
+{
+  "ts_utc": "2026-03-01T20:18:29Z",
+  "category": "technical-gotcha",
+  "text": "Playwright strict mode will fail on unscoped text locators when the same text appears in multiple UI regions (e.g., sidebar preview + header + message bubble).\nPrefer scoping assertions to stable containers (like `[data-testid=\"message-list\"]`) or targeting unique elements (e.g., `#activeTitle`).",
+  "issue": "https://github.com/claudioclebersonpereira-ai/PenpChat/issues/1",
+  "pointers": ["e2e/chat.spec.js", "index.html"]
+}
+
