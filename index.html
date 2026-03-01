@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PenpChat</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to chat</a>
+
+    <div class="app" id="app">
+      <aside class="sidebar" aria-label="Conversations">
+        <div class="sidebar-top">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true">PC</div>
+            <div class="brand-text">
+              <div class="brand-name">PenpChat</div>
+              <div class="brand-sub">UI-only demo</div>
+            </div>
+          </div>
+
+          <label class="search" for="searchInput">
+            <span class="sr-only">Search conversations</span>
+            <input
+              id="searchInput"
+              class="search-input"
+              type="search"
+              inputmode="search"
+              autocomplete="off"
+              placeholder="Search conversations…"
+            />
+          </label>
+        </div>
+
+        <div
+          class="sidebar-list"
+          id="conversationList"
+          role="listbox"
+          aria-label="Conversation list"
+          data-testid="conversation-list"
+        ></div>
+      </aside>
+
+      <main class="main" id="main" tabindex="-1">
+        <section class="empty" id="emptyState" aria-label="Empty state" data-testid="empty-state">
+          <div class="empty-card">
+            <div class="empty-illu" aria-hidden="true">
+              <svg viewBox="0 0 240 180" width="240" height="180">
+                <defs>
+                  <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#1f4d3d" stop-opacity="0.18" />
+                    <stop offset="1" stop-color="#c46b3c" stop-opacity="0.18" />
+                  </linearGradient>
+                </defs>
+                <rect x="18" y="20" width="204" height="132" rx="18" fill="url(#g)" />
+                <path
+                  d="M58 62c0-10 8-18 18-18h88c10 0 18 8 18 18v44c0 10-8 18-18 18H108l-22 18v-18H76c-10 0-18-8-18-18V62z"
+                  fill="#fbf6ee"
+                  stroke="#1f4d3d"
+                  stroke-opacity="0.35"
+                  stroke-width="3"
+                />
+                <circle cx="86" cy="83" r="6" fill="#1f4d3d" fill-opacity="0.55" />
+                <circle cx="120" cy="83" r="6" fill="#1f4d3d" fill-opacity="0.55" />
+                <circle cx="154" cy="83" r="6" fill="#1f4d3d" fill-opacity="0.55" />
+              </svg>
+            </div>
+
+            <h1 class="empty-title">Choose a conversation</h1>
+            <p class="empty-sub">
+              This is a UI-only sandbox. Messages live in memory and reset on refresh.
+            </p>
+            <ul class="empty-bullets">
+              <li>Search by name or a recent message.</li>
+              <li>Try reactions, quick replies, and multiline composing.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="chat" id="chatView" aria-label="Chat view" data-testid="chat-view" hidden>
+          <header class="chat-header">
+            <div class="chat-header-left">
+              <div class="avatar avatar--header" id="activeAvatar" aria-hidden="true"></div>
+              <div class="chat-header-meta">
+                <div class="chat-title" id="activeTitle">—</div>
+                <div class="chat-sub" id="activeSub">—</div>
+              </div>
+            </div>
+
+            <button class="icon-button" type="button" id="clearSelectionBtn" aria-label="Clear selection">
+              <span aria-hidden="true">✕</span>
+            </button>
+          </header>
+
+          <div class="messages-wrap" id="messagesWrap">
+            <ul class="messages" id="messageList" aria-label="Messages" data-testid="message-list"></ul>
+
+            <div class="typing" id="typingIndicator" aria-live="polite" data-testid="typing" hidden>
+              <span class="typing-name" id="typingName">Someone</span>
+              <span>is typing</span>
+              <span class="dots" aria-hidden="true">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </span>
+            </div>
+
+            <div class="quick" id="quickReplies" aria-label="Quick replies" data-testid="quick-replies"></div>
+          </div>
+
+          <form class="composer" id="composerForm" autocomplete="off">
+            <label class="sr-only" for="composerInput">Message</label>
+            <textarea
+              id="composerInput"
+              class="composer-input"
+              rows="1"
+              placeholder="Write a message…"
+              data-testid="composer-input"
+            ></textarea>
+            <button class="send" type="submit" id="sendBtn" data-testid="send-btn">Send</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
